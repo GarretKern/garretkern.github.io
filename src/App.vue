@@ -1,31 +1,45 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <div id="header"><router-link to="/"> Garret Kern </router-link></div>
+
+      <router-link to="/security">Security</router-link> |
+      <router-link to="/engineering">Engineering</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/resume">Resume</router-link>
     </div>
-    <router-view/>
+    <keep-alive>
+      <router-view />
+    </keep-alive>
   </div>
 </template>
 
-<style>
+<style lang="scss">
+@import "@/variables.scss";
+body {
+  background-color: $dark;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Monaco", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: $cyan;
 }
 #nav {
-  padding: 30px;
-}
-
-#nav a {
   font-weight: bold;
-  color: #2c3e50;
+  font-size: 14pt;
+  text-align: center;
+  a.router-link-exact-active {
+    color: $green;
+  }
+  a {
+    color: $cyan;
+    text-decoration: none;
+  }
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+#header {
+  font-size: 18pt;
+  text-align: center;
+  color: $cyan;
 }
 </style>
