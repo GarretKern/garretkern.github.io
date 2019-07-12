@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <div id="nav">
-      <div id="header"><router-link to="/"> Garret Kern </router-link></div>
+      <div id="header">
+        <router-link to="/"> Garret Kern </router-link>
+      </div>
 
-      <router-link to="/security">Security</router-link> |
-      <router-link to="/engineering">Engineering</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/resume">Resume</router-link>
+      <router-link to="/">Security</router-link> |
+      <router-link to="/">Engineering</router-link> |
+      <router-link to="/">About Me</router-link>
     </div>
     <keep-alive>
       <router-view />
@@ -26,15 +27,20 @@ body {
   color: $cyan;
 }
 #nav {
+  border: none;
+  -moz-outline-style: none;
+  outline: none;
   font-weight: bold;
   font-size: 14pt;
   text-align: center;
-  a.router-link-exact-active {
-    color: $green;
-  }
+
   a {
     color: $cyan;
     text-decoration: none;
+
+    &:hover {
+      color: $magneta;
+    }
   }
 }
 #header {

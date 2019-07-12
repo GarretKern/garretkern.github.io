@@ -7,7 +7,7 @@
       <span class="text" v-if="item.output"> &nbsp {{ item.output }} </span>
     </p>
     <p>
-      ~/Home/Garret $
+      {{ this.path }} $
       <span class="text">{{ command }}</span>
       <span class="blink">&nbsp</span>
       <input type="text" id="input" v-model="command" />
