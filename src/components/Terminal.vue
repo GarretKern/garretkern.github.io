@@ -10,6 +10,7 @@
         <component
           v-bind:is="item.command"
           v-bind:input="item.input"
+          v-bind:path="item.path"
         ></component>
       </div>
     </div>
