@@ -8,6 +8,8 @@
 
 <script>
 import $ from "jquery";
+import "@/utils/filesystem.js";
+
 export default {};
 </script>
 

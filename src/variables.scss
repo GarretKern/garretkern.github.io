@@ -8,18 +8,25 @@ $magneta: #ff92d0;
 $magneta-light: #ffc5eb;
 $red: #ff6d67;
 
+$medium-text: 14pt;
+$large-text: 16pt;
+
+.white {
+  color: $white;
+}
 .magneta {
   color: $magneta;
 }
-
 .red {
-  color: $magneta;
+  color: $red;
 }
-
 .green {
-  color: $magneta;
+  color: $green;
+}
+.blue {
+  color: $blue;
 }
 
-.purple {
-  color: $magneta;
+.large {
+  font-size: $large-text;
 }

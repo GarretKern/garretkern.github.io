@@ -1,18 +1,18 @@
 <template>
   <div id="terminal">
-    <p v-for="item in command_history">
+    <div v-for="item in command_history">
       {{ item.path }} $
-      <span class="text">{{ item.input }}</span>
+      <span class="white">{{ item.input }}</span>
       <span class="blink" v-if="item.active">&nbsp</span>
       <input type="text" id="input" v-if="item.active" v-model="item.input" />
       <br />
-      <span class="text" v-if="item.command">
+      <div class="output white" v-if="item.command">
         <component
           v-bind:is="item.command"
           v-bind:input="item.input"
         ></component>
-      </span>
-    </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
 
       // parse input to determine command
       let command = current.input.split(" ")[0];
-      if (commands.indexOf(command) === -1) {
+      if (command != "" && commands.indexOf(command) === -1) {
         command = "invalid";
       }
       if (command === "clear") {
@@ -101,9 +101,10 @@ export default {
 @import "@/variables.scss";
 
 #terminal {
-  font-size: 14pt;
+  font-size: $medium-text;
   margin-left: 20%;
   width: 60%;
+  margin-top: 2%;
 }
 
 #input {
@@ -116,8 +117,8 @@ export default {
   }
 }
 
-.text {
-  color: $white;
+.output {
+  margin-left: 30px;
 }
 
 .blink {
