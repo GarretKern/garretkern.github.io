@@ -1,5 +1,5 @@
 <template>
   <div>
-    A Writeup for the luke htb
+    A list of books and book reviews
   </div>
 </template>

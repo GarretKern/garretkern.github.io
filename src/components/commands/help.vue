@@ -1,18 +1,18 @@
 <template>
   <div id="command-help">
-    <p>
-      <span class="magneta">help</span>: Information on how to navigate <br />
-      <span class="magneta">ls</span>: list contents of directory <br />
-      <span class="magneta">cd &lt;directory&gt;</span>: move into specified
-      directory <br />
-      <span class="magneta">cat &lt;file&gt;</span>: list contents of directory
-      <br />
-      <span class="magneta">clear</span>: clear history
+    <span class="magneta">help</span>: List of available commands
+    <br />
+    <span class="magneta">ls</span>: List the contents of current directory
+    <br />
+    <span class="magneta">cd &lt;directory&gt;</span>: Move into a new directory
+    directory <br />
+    <span class="magneta">cat &lt;file&gt;</span>: Display contents of a file
+    <br />
+    <span class="magneta">clear</span>: Clear history
 
-      <br />
-      <span class="magneta">treeview</span>: links for traditional navigation
+    <br />
+    <span class="magneta">treeview</span>: Display entire file structure
 
-      <br />
-    </p>
+    <br />
   </div>
 </template>

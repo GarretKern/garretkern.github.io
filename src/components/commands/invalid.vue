@@ -1,5 +1,13 @@
 <template>
   <div id="command-help">
-    <p><span class="magneta">invalid</span> command</p>
+    <span class="magneta">{{ input }}</span
+    >: invalid command
   </div>
 </template>
+
+<script>
+export default {
+  name: "invalid",
+  props: { input: String }
+};
+</script>

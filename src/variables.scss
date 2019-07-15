@@ -5,9 +5,8 @@ $red: #ff6d67;
 $cyan: #99ecfd;
 $white: #c7c7c7;
 $magneta: #ff92d0;
-$magneta-light: #ffc5eb;
-$red: #ff6d67;
 
+$small-text: 12pt;
 $medium-text: 14pt;
 $large-text: 16pt;
 
@@ -29,4 +28,21 @@ $large-text: 16pt;
 
 .large {
   font-size: $large-text;
+}
+
+.small {
+  font-size: $small-text;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.seperated {
+  margin-top: 12px;
+  margin-bottom: 12px;
 }

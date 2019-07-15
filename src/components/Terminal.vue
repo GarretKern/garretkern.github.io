@@ -6,11 +6,12 @@
       <span class="blink" v-if="item.active">&nbsp</span>
       <input type="text" id="input" v-if="item.active" v-model="item.input" />
       <br />
-      <div class="output white" v-if="item.command">
+      <div class="output white seperated" v-if="item.command">
         <component
           v-bind:is="item.command"
           v-bind:input="item.input"
           v-bind:path="item.path"
+          v-on:change-directory="change_directory"
         ></component>
       </div>
     </div>
@@ -19,11 +20,6 @@
 
 <script>
 import $ from "jquery";
-import help from "@/components/commands/help.vue";
-import ls from "@/components/commands/ls.vue";
-import cat from "@/components/commands/cat.vue";
-import treeview from "@/components/commands/treeview.vue";
-import invalid from "@/components/commands/invalid.vue";
 
 const commands = ["ls", "help", "cd", "cat", "treeview", "clear"];
 
@@ -42,20 +38,17 @@ export default {
     };
   },
 
-  components: {
-    help,
-    ls,
-    cat,
-    treeview,
-    invalid
-  },
-
   methods: {
     process(e) {
       $("#input").focus();
       if (e.keyCode === 13) {
         this.command();
       }
+    },
+
+    change_directory(path) {
+      let current = this.command_history[this.command_history.length - 1];
+      current.path = path;
     },
 
     command() {
@@ -68,10 +61,6 @@ export default {
       }
       if (command === "clear") {
         this.command_history = [];
-      }
-      if (command === "cd") {
-        command = "";
-        console.log("change directory");
       }
 
       // reset current command
@@ -103,8 +92,8 @@ export default {
 
 #terminal {
   font-size: $medium-text;
-  margin-left: 20%;
-  width: 60%;
+  margin-left: 10%;
+  width: 80%;
   margin-top: 2%;
 }
 

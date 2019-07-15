@@ -9,16 +9,19 @@
 </template>
 
 <script>
+import { exists, get_component } from "@/utils/filesystem.js";
 export default {
   name: "cat",
-  props: { input: String },
+  props: { input: String, path: String },
   computed: {
     file: function() {
       let file = this.input.split(" ")[1];
-      if (file != "garret") {
-        file = "";
+      let path = this.path + "/" + file;
+      if (!exists(path, false)) {
+        return "";
       }
-      return file;
+      let component = get_component(path);
+      return component;
     }
   }
 };

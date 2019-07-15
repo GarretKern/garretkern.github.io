@@ -8,7 +8,8 @@
 
 <script>
 import $ from "jquery";
-import "@/utils/register_files.js";
+import "@/utils/_register_files.js";
+import "@/utils/_register_commands.js";
 
 export default {};
 </script>

@@ -1,5 +1,5 @@
 <template>
   <div>
-    A Writeup for the luke htb
+    A bit about climbing
   </div>
 </template>

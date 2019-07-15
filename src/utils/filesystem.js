@@ -1,15 +1,7 @@
-// filesystem is imported by app and a filesystem object is passed to terminal
-// this object offers the following commands: "exists(path)"
-// this reads in all file objects and directories based on what is in filesystem folder
-// each file has a filename-truename
-// ex. readme-garret.vue
-// route view should be able to navigate directly to files, and create a terminal which includes a starting command cat filename
-// runs cd, then cat
-
 // https://webpack.js.org/guides/dependency-management/#require-context
 const requireComponent = require.context(
   // Look for files in the current directory
-  "../components/filesystem",
+  "@/components/filesystem",
   // Look in subdirectories
   true,
   // Only .vue files
@@ -20,51 +12,62 @@ let system = build_system(requireComponent.keys());
 
 // Parse paths to find directories and filenames
 function build_system(paths) {
-  let files = [];
-  let directories = [];
+  let system = [];
   for (var i = 0; i < paths.length; i++) {
+    // create file
     const cur_path = paths[i].replace(".", "~/Home/Garret").split("/");
-    const filename = cur_path[cur_path.length - 1].split(".")[0].split("-")[0];
+    const names = cur_path[cur_path.length - 1].split(".")[0].split("-");
+    const component_name = names[1];
+    const file_name = names[0];
     const directory = cur_path.slice(0, cur_path.length - 1).join("/");
-    const directory_name = directory.split("/")[
-      directory.split("/").length - 1
-    ];
-    const full_path = directory + "/" + filename;
-    const file = { name: filename, path: full_path };
-    files.push(file);
-    directories.push({ name: directory_name, path: directory });
+    const full_path = directory + "/" + file_name;
+    const file = {
+      name: file_name,
+      path: full_path,
+      dir: false,
+      component: component_name
+    };
+    system.push(file);
+
+    // check directory
+    if (
+      system.filter(dir => {
+        return dir.dir && dir.path === directory;
+      }).length === 0
+    ) {
+      const directory_name = directory.split("/")[
+        directory.split("/").length - 1
+      ];
+      system.push({ name: directory_name, path: directory, dir: true });
+    }
   }
-  return { files: files, directories: directories };
+  return system;
 }
 
 function get_contents(path) {
-  let directory = system.directories.filter(dir => {
-    return dir.path === path;
+  let directory = system.filter(dir => {
+    return dir.dir && dir.path === path;
   })[0];
 
-  let directories = system.directories.filter(dir => {
-    return dir.path === path + "/" + dir.name;
-  });
-  let files = system.files.filter(file => {
+  let files = system.filter(file => {
     return file.path === path + "/" + file.name;
   });
-  return { files: files, directories: directories };
+  return files;
 }
 
-function path_exists(path) {
+function get_component(path) {
+  let component = system.filter(file => {
+    return file.path === path;
+  })[0];
+  return component.component;
+}
+
+function exists(path, dir) {
   return (
-    system.directories.filter(dir => {
-      return dir.path === path;
+    system.filter(file => {
+      return file.path === path && file.dir === dir;
     }).length > 0
   );
 }
 
-function file_exists(path) {
-  return (
-    system.files.filter(file => {
-      return file.path === path;
-    }).length > 0
-  );
-}
-
-export { path_exists, file_exists, get_contents };
+export { exists, get_contents, get_component };
