@@ -1,3 +1,5 @@
 <template>
-  <div>treeview with a list of traditional links here</div>
+  <div>
+    TODO: Treeview will display file structure and incude links to each page
+  </div>
 </template>

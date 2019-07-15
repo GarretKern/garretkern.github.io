@@ -80,6 +80,8 @@ export default {
   created: function() {
     $("#input").focus();
     $(document).keydown(this.process);
+    this.command_history[this.command_history.length - 1].input = "cat readme";
+    this.command();
   },
   updated: function() {
     window.scrollTo(0, $("#app")[0].scrollHeight);

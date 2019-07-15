@@ -1,5 +1,5 @@
 <template>
   <div>
-    A Writeup for the luke htb
+    TODO: A Writeup for the luke hackthebox.eu
   </div>
 </template>

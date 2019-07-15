@@ -13,18 +13,16 @@ import { exists } from "@/utils/filesystem.js";
 export default {
   name: "cd",
   props: { input: String, path: String },
-  computed: {
-    exists: function() {
-      let dir = this.input.split(" ")[1];
-      let path = this.path + "/" + dir;
-      let check = exists(path, true);
-      return check;
-    }
-  },
   created: function() {
     let dir = this.input.split(" ")[1];
     let path = this.path + "/" + dir;
+    if (dir === "..") {
+      console.log(dir);
+      const parts = this.path.split("/");
+      path = parts.slice(0, parts.length - 1).join("/");
+    }
     let check = exists(path, true);
+    this.exists = check;
     if (check) {
       // send message to parent
       this.$emit("change-directory", path);

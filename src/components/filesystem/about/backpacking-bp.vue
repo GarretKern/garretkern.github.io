@@ -1,5 +1,5 @@
 <template>
   <div>
-    A list of places I have backpacked, perhaps photos
+    TODO: embed a map with pins of where I've hiked and a few stories
   </div>
 </template>
