@@ -16,6 +16,7 @@
       I post my security walkthroughs and project writeups here.
     </div>
     <div class="seperated">
+      Type commands and hit enter to see the output. <br />
       Type <span class="magneta">help</span> to learn how to navigate. <br />
       Type <span class="magneta">treeview</span> to access traditional view
     </div>

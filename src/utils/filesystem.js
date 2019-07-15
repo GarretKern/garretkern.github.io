@@ -55,6 +55,20 @@ function get_contents(path) {
   return files;
 }
 
+function tab_complete(path, input) {
+  let items = system.filter(item => {
+    return (
+      item.path === path + "/" + item.name &&
+      item.name.substring(0, input.length) === input
+    );
+  });
+  if (items.length === 1) {
+    return items[0].name;
+  } else {
+    return "";
+  }
+}
+
 function get_component(path) {
   let component = system.filter(file => {
     return file.path === path;
@@ -70,4 +84,4 @@ function exists(path, dir) {
   );
 }
 
-export { exists, get_contents, get_component };
+export { exists, get_contents, get_component, tab_complete };

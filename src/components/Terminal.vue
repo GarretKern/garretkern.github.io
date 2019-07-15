@@ -4,7 +4,13 @@
       {{ item.path }} $
       <span class="white">{{ item.input }}</span>
       <span class="blink" v-if="item.active">&nbsp</span>
-      <input type="text" id="input" v-if="item.active" v-model="item.input" />
+      <input
+        type="text"
+        id="input"
+        v-if="item.active"
+        v-model="item.input"
+        autofocus
+      />
       <br />
       <div class="output white seperated" v-if="item.command">
         <component
@@ -20,6 +26,7 @@
 
 <script>
 import $ from "jquery";
+import { tab_complete } from "@/utils/filesystem.js";
 
 const commands = ["ls", "help", "cd", "cat", "treeview", "clear"];
 
@@ -44,15 +51,33 @@ export default {
       if (e.keyCode === 13) {
         this.command();
       }
+      if (e.keyCode === 9) {
+        if (e.preventDefault) {
+          e.preventDefault();
+        }
+        let current_command = this.current_command();
+        let inputs = current_command.input.split(" ");
+        let pre_input = inputs.slice(0, inputs.length - 1);
+        let post_input = inputs[inputs.length - 1];
+
+        let complete = tab_complete(current_command.path, post_input);
+        if (complete) {
+          pre_input.push(complete);
+          current_command.input = pre_input.join(" ");
+        }
+      }
+    },
+
+    current_command() {
+      return this.command_history[this.command_history.length - 1];
     },
 
     change_directory(path) {
-      let current = this.command_history[this.command_history.length - 1];
-      current.path = path;
+      this.current_command().path = path;
     },
 
     command() {
-      let current = this.command_history[this.command_history.length - 1];
+      let current = this.current_command();
 
       // parse input to determine command
       let command = current.input.split(" ")[0];
@@ -78,7 +103,6 @@ export default {
     }
   },
   created: function() {
-    $("#input").focus();
     $(document).keydown(this.process);
     this.command_history[this.command_history.length - 1].input = "cat readme";
     this.command();

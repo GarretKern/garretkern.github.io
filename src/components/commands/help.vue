@@ -12,6 +12,8 @@
 
     <br />
     <span class="magneta">treeview</span>: Display entire file structure
+    <br />
+    Includes <span class="blue">tab completion</span>
 
     <br />
   </div>
