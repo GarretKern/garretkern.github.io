@@ -1,14 +1,13 @@
 function is_mobile() {
-  let check = false;
-  let ua = navigator.userAgent;
-  if (
-    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(
-      ua
-    )
-  ) {
-    check = true;
+  let mobile;
+  try {
+    document.createEvent("TouchEvent");
+    mobile = true;
+  } catch (e) {
+    mobile = false;
   }
-  return !check;
+  console.log(mobile);
+  return mobile;
 }
 
 export { is_mobile };
