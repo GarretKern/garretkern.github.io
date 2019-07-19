@@ -13,7 +13,7 @@
     <div class="seperated">
       This is my personal website, emulating a
       <span class="green">*nix</span> style terminal. <br />
-      I post my security walkthroughs and project writeups here.
+      I upload security tutorials and project writeups.
     </div>
     <div class="seperated">
       Type commands and hit enter to see the output. <br />

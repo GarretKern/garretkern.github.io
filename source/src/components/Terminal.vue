@@ -46,8 +46,11 @@ export default {
   },
 
   methods: {
-    process(e) {
+    focus(e) {
       $("#input").focus();
+    },
+    process(e) {
+      this.focus();
       if (e.keyCode === 13) {
         this.command();
       }
@@ -104,6 +107,7 @@ export default {
   },
   created: function() {
     $(document).keydown(this.process);
+    $(document).click(this.focus);
     this.command_history[this.command_history.length - 1].input = "cat readme";
     this.command();
   },
@@ -147,8 +151,8 @@ export default {
     }
   }
 
-  width: 2px;
-  height: 5px;
+  width: 2rem;
+  height: 5rem;
   animation: blinking 1.2s infinite;
 }
 </style>
