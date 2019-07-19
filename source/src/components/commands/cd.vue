@@ -3,7 +3,7 @@
     <div v-if="exists"></div>
     <div v-else>
       <span class="magneta">{{ input }}</span
-      >: No such directory
+      >: {{ message }}
     </div>
   </div>
 </template>
@@ -15,15 +15,22 @@ export default {
   props: { input: String, path: String },
   created: function() {
     let dir = this.input.split(" ")[1];
+    let old_path = this.path;
     let path = this.path + "/" + dir;
     if (dir === "..") {
-      console.log(dir);
       const parts = this.path.split("/");
       path = parts.slice(0, parts.length - 1).join("/");
     }
-    let check = exists(path, true);
-    this.exists = check;
-    if (check) {
+
+    this.exists = exists(path, true);
+    // "Garret is always highest permissble directory"
+    if (path.indexOf("Garret") === -1) {
+      path = old_path;
+      this.message = "Permission denied";
+    } else if (!this.exists) {
+      this.message = "No such directory";
+    }
+    if (this.exists) {
       // send message to parent
       this.$emit("change-directory", path);
     }
