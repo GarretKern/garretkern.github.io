@@ -7,7 +7,7 @@ export default {
     mobile() {
       var isMobile = false; //initiate as false
       // device detection
-      if ($("#some-element").css("display") == "none") {
+      if ($("#app").css("display") == "none") {
         isMobile = true;
       }
       return isMobile;

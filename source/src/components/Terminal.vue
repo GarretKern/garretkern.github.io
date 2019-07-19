@@ -3,7 +3,7 @@
     <div v-for="item in command_history">
       {{ item.path }} $
       <span class="white">{{ item.input }}</span>
-      <span class="blink" v-if="item.active && mobile">&nbsp</span>
+      <span class="blink" v-if="item.active && !mobile">&nbsp</span>
       <input type="text" id="input" v-if="item.active" v-model="item.input" />
       <br />
       <div class="output white seperated" v-if="item.command">
@@ -29,10 +29,16 @@ export default {
   name: "terminal",
   mixins: [isMobile],
   data: function() {
+    let path;
+    if (this.mobile) {
+      path = "~/Home/Garret";
+    } else {
+      path = "~/Mobile/Garret";
+    }
     return {
       command_history: [
         {
-          path: "~/Home/Garret",
+          path: path,
           input: "",
           command: "",
           active: true

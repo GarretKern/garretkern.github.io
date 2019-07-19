@@ -15,7 +15,7 @@ function build_system(paths) {
   let system = [];
   for (var i = 0; i < paths.length; i++) {
     // create file
-    const cur_path = paths[i].replace(".", "~/Home/Garret").split("/");
+    const cur_path = paths[i].replace(".", "~").split("/");
     const names = cur_path[cur_path.length - 1].split(".")[0].split("-");
     const component_name = names[1];
     const file_name = names[0];
