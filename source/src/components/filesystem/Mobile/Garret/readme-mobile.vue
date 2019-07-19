@@ -13,12 +13,10 @@
     <div class="seperated">
       This is my personal website, emulating a
       <span class="green">*nix</span> style terminal. <br />
-      I upload security tutorials and project writeups.
     </div>
     <div class="seperated">
-      Type commands and hit enter to see the output. <br />
-      Type <span class="magneta">help</span> to learn how to navigate. <br />
-      Type <span class="magneta">treeview</span> to access traditional view
+      Navigation is not currently supported on
+      <span class="magneta">mobile</span> devices
     </div>
   </div>
 </template>
