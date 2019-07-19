@@ -3,14 +3,8 @@
     <div v-for="item in command_history">
       {{ item.path }} $
       <span class="white">{{ item.input }}</span>
-      <span class="blink" v-if="item.active">&nbsp</span>
-      <input
-        type="text"
-        id="input"
-        v-if="item.active"
-        v-model="item.input"
-        autofocus
-      />
+      <span class="blink" v-if="item.active && mobile">&nbsp</span>
+      <input type="text" id="input" v-if="item.active" v-model="item.input" />
       <br />
       <div class="output white seperated" v-if="item.command">
         <component
@@ -27,11 +21,13 @@
 <script>
 import $ from "jquery";
 import { tab_complete } from "@/utils/filesystem.js";
+import isMobile from "@/mixins/is-mobile.vue";
 
 const commands = ["ls", "help", "cd", "cat", "treeview", "clear"];
 
 export default {
   name: "terminal",
+  mixins: [isMobile],
   data: function() {
     return {
       command_history: [
@@ -84,6 +80,7 @@ export default {
 
       // parse input to determine command
       let command = current.input.split(" ")[0];
+      command = command.toLowerCase();
       if (command != "" && commands.indexOf(command) === -1) {
         command = "invalid";
       }
@@ -97,18 +94,21 @@ export default {
       current.active = false;
 
       // push new active command to history
-      this.command_history.push({
-        path: newPath,
-        input: "",
-        command: "",
-        active: true
-      });
+      if (!this.mobile) {
+        this.command_history.push({
+          path: newPath,
+          input: "",
+          command: "",
+          active: true
+        });
+      }
     }
   },
   created: function() {
     $(document).keydown(this.process);
     $(document).click(this.focus);
     this.command_history[this.command_history.length - 1].input = "cat readme";
+    this.mobile = this.mobile();
     this.command();
   },
   updated: function() {
