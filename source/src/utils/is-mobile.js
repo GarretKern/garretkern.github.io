@@ -6,7 +6,6 @@ function is_mobile() {
   } catch (e) {
     mobile = false;
   }
-  console.log(mobile);
   return mobile;
 }
 

@@ -7,8 +7,8 @@
     </div>
     <div class="seperated">
       I have experience in
-      <span class="blue"> full-stack engineering </span>
-      and <span class="blue">infosecurity</span>.
+      <span class="blue"> infosecurity </span>
+      and <span class="blue">full-stack engineering</span>.
     </div>
     <div class="seperated">
       This is my personal website, emulating a
@@ -17,8 +17,7 @@
     </div>
     <div class="seperated">
       Type commands and hit enter to see the output. <br />
-      Type <span class="magneta">help</span> to learn how to navigate. <br />
-      Type <span class="magneta">treeview</span> to access traditional view
+      Use the <span class="magneta">help</span> to learn how to navigate. <br />
     </div>
   </div>
 </template>

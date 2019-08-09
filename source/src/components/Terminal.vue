@@ -113,10 +113,12 @@ export default {
   created: function() {
     $(document).keydown(this.process);
     $(document).click(this.focus);
-    this.command_history[this.command_history.length - 1].input = "cat readme";
+    this.current_command().input = "cat readme";
     this.command();
   },
+
   updated: function() {
+    // Scroll to bottom of screen on new commands
     window.scrollTo(0, $("#app")[0].scrollHeight);
   }
 };
@@ -156,8 +158,8 @@ export default {
     }
   }
 
-  width: 2rem;
-  height: 5rem;
+  width: 2%;
+  height: 5%;
   animation: blinking 1.2s infinite;
 }
 </style>

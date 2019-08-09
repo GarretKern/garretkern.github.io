@@ -5,6 +5,6 @@
       <span class="green underline" style="">here</span></a
     >
     to view my old website. <br />
-    Last updated <span class="blue"> July 12th</span>
+    Last updated <span class="blue"> October 14th, 2018</span>
   </div>
 </template>

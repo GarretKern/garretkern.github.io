@@ -2,9 +2,9 @@
   <div id="command-ls">
     <div v-for="item in contents" class="item">
       <div v-if="item.dir">
-        <span class="blue"> {{ item.name }}&nbsp</span>
+        <span class="blue"> {{ item.name }}&nbsp&nbsp</span>
       </div>
-      <div v-else style="display:inline">{{ item.name }}&nbsp</div>
+      <div v-else style="display:inline">{{ item.name }}&nbsp&nbsp</div>
     </div>
     <br />
   </div>
