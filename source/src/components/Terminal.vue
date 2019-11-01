@@ -113,7 +113,7 @@ export default {
   created: function() {
     $(document).keydown(this.process);
     $(document).click(this.focus);
-    this.current_command().input = "cat readme";
+    this.current_command().input = "cat readme.txt";
     this.command();
   },
 

@@ -22,8 +22,8 @@ function build_system(paths) {
     const directory = cur_path.slice(0, cur_path.length - 1).join("/");
     const full_path = directory + "/" + file_name;
     const file = {
-      name: file_name,
-      path: full_path,
+      name: file_name + ".txt",
+      path: full_path + ".txt",
       dir: false,
       component: component_name
     };

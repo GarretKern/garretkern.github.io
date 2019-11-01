@@ -12,7 +12,7 @@
     </div>
     <div class="seperated">
       This is my personal website, emulating a
-      <span class="green">*nix</span> style terminal. <br />
+      <span class="green">unix</span> style terminal. <br />
       I upload security tutorials and project writeups.
     </div>
     <div class="seperated">
