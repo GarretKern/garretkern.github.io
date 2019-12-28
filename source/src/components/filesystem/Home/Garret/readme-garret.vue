@@ -17,7 +17,7 @@
     </div>
     <div class="seperated">
       Type commands and hit enter to see the output. <br />
-      Use the <span class="magneta">help</span> to learn how to navigate. <br />
+      Use the <span class="magneta">help</span> command to learn how to navigate. <br />
     </div>
   </div>
 </template>
